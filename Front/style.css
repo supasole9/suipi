@@ -1,0 +1,25 @@
+body {
+     background-color: white;
+}
+
+#player1Hand{
+     display: flex;
+     width: 100%;
+}
+
+#player2Hand{
+     display: flex;
+     width: 100%;
+}
+
+#boardHand{
+     display: flex;
+}
+.card {
+     display: block;
+     background-color: brown;
+     color: white;
+     height: 100px;
+     width: 85px;
+     margin: 10px;
+}
