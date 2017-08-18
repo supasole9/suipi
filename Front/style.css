@@ -16,10 +16,14 @@ body {
      display: flex;
 }
 .card {
+     height: 178px;
+     width: 110px;
      display: block;
-     background-color: brown;
-     color: white;
-     height: 100px;
-     width: 85px;
+     background-color: #D8D8D8;
+     border-radius: 10px;
+     padding: 25px;
+     font-family: montserrat;
+     font-size: 12px;
+     font-weight: lighter;
      margin: 10px;
 }

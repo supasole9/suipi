@@ -8,6 +8,9 @@ var board = [];
 var boardCount = 4;
 var dealCount = 8;
 var playTurn;
+var handselect = false;
+
+var playCard = []
 
 function card(value, name, suit){
 	this.value = value;
@@ -16,7 +19,7 @@ function card(value, name, suit){
 }
 
 function deck(){
-	this.names = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+	this.names = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 	this.suits = ['Hearts','Diamonds','Spades','Clubs'];
 	var cards = [];
 
@@ -107,19 +110,42 @@ letsSeeIfThisWorks()
 function displaycards (who, hand) {
 	for (var i = 0; i < who.length; i ++){
 		var cardData = document.createElement("div");
+		cardData.suit = who[i].suit
+		cardData.name = who[i].name
 		cardData.className = "card";
-		var suitValue =  document.createElement("p");
+		var suitValue =  document.createElement("h2");
 		suitValue.innerHTML = who[i].suit;
 		cardData.appendChild(suitValue)
-		var numberValue = document.createElement("p");
+		var numberValue = document.createElement("h3");
 		numberValue.innerHTML = who[i].name;
 		cardData.appendChild(numberValue);
+
+		cardData.onclick = function () {
+			this.style.background = "#FFECC7";
+			selectCard(this)
+		}
 		hand.appendChild(cardData);
 	}
 };
 
-$(".card").click(function() {
-    var text = $(this).text();
-    
-    console.log(text)
-});
+function selectCard(cardName){
+	var match = document.createElement("button");
+	match.innerHTML = "Select Card";
+	match.onclick = function () {
+		handselect = false;
+		playCard.push(cardName.name)
+		this.style.background = "#D8D8D8";
+		match.style.display = "none";
+		if (playCard.length > 1){
+			matching(playCard[0], playCard[1])
+		}
+	}
+	cardName.appendChild(match)
+}
+
+
+function matching (one, two) {
+	if (one.name === two.name) {
+		alert("success")
+	}
+}
